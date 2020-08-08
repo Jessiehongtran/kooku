@@ -1,1 +1,1 @@
-# kooku
+Software for Inventory Management
