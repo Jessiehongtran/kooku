@@ -2,6 +2,7 @@ import React from 'react';
 import { ingredients } from '../data/ingredients';
 import '../styles/inventory.scss';
 import Ingredient from '../components/each_ingredient'
+import { faPrint } from '@fortawesome/free-solid-svg-icons';
 
 export default class Inventory extends React.Component {
     constructor(props){
@@ -35,15 +36,8 @@ export default class Inventory extends React.Component {
         })
     }
 
-    
-
     render(){
-        const {
-            ingredients, 
-            openEditCapacity,
-            openEditAvgNeed,
-            openEditUsed
-                } = this.state
+        const {ingredients} = this.state
 
         return (
         <div className="inventory">
@@ -52,12 +46,14 @@ export default class Inventory extends React.Component {
                 <input 
                     type="text"
                     name="new_ingredient"
+                    placeholder="Ex.orange"
                     onChange={this.handleChange}
                 />
                 <label>Unit</label>
                 <input 
                     type="text"
                     name="unit"
+                    placeholder="Ex.item"
                     onChange={this.handleChange}
                 />
                 <button onClick={this.addIngredient}>Add</button>
@@ -79,6 +75,9 @@ export default class Inventory extends React.Component {
                     
                 )}
             </table>
+            <div className="print_container">
+                <button className="print" onClick={() => window.print()}>Print Report</button>
+            </div>
         </div>
         )
     }

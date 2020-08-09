@@ -1,0 +1,19 @@
+tr {
+    span {
+        color: #464845  ;
+        font-size: 14px;
+        margin-left: 10px;
+        text-align: right;
+    }
+
+    input {
+        border: none;
+        width: 50px;
+        font-family: 'Chilanka', cursive;
+    }
+
+    input:focus {
+        outline: none
+    }
+
+}

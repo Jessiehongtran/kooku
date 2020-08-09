@@ -5,25 +5,59 @@
 
     .add_new {
         margin-bottom: 20px;
+        font-family: 'Chilanka', cursive;
+
+        label {
+            margin-right: 10px;
+        }
+
+        input {
+            outline: 0;
+            border-width: 0 0 1.5px;
+            border-color: #464845;
+            margin-right: 20px;
+            font-family: 'Chilanka', cursive;
+            font-size: 16px;
+            padding-left: 5px;
+        }
+
+        button {
+            font-family: 'Chilanka', cursive;
+            padding: 5px 5px 3px 5px;
+            background-color: #D2F8BE;
+            border: 1px solid #464845;
+            border-radius: 6px;
+        }
     }
 
     table {
         width:80%;
-        border: 1px solid black;
+        border: 1px solid #464845;
         border-collapse: collapse;
+        font-family: 'Chilanka', cursive;
 
         th, td {
-            border: 1px solid black;
+            border: 1px solid #464845;
             border-collapse: collapse;
             padding: 15px;
-            // text-align: left;
+            font-family: 'Chilanka', cursive;
 
-            span {
-                color: #464845  ;
-                font-size: 14px;
-                margin-left: 10px;
-                text-align: right;
-            }
+
+        }
+    }
+
+    .print_container {
+        width: 80%;
+        display: flex;
+        justify-content: flex-end;
+
+        .print {
+            font-family: 'Chilanka', cursive;
+            padding: 5px 5px 3px 5px;
+            background-color: #F1F9ED;
+            border: 1px solid #464845;
+            border-radius: 6px;
+            margin-top: 20px;
         }
     }
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEdit } from "@fortawesome/free-solid-svg-icons";
+import { faEdit, faCheck } from "@fortawesome/free-solid-svg-icons";
+import '../styles/each_ingredient.scss'
 
 export default class Ingredient extends React.Component {
     constructor(props){
@@ -11,7 +12,7 @@ export default class Ingredient extends React.Component {
             openEditAvgNeed: false,
             capacity: this.props.ingredient.capacity,
             used: this.props.ingredient.used,
-            avgNeed: this.props.ingredient.average_need
+            average_need: this.props.ingredient.average_need
         }
 
         this.handleChange = this.handleChange.bind(this)
@@ -53,7 +54,7 @@ export default class Ingredient extends React.Component {
             openEditUsed,
             capacity,
             used,
-            avgneed
+            average_need
         } = this.state
 
         return (
@@ -67,11 +68,11 @@ export default class Ingredient extends React.Component {
                                 <input
                                 type="number"
                                 name="capacity"
-                                step="0.00"
+                                step="0.01"
                                 value={capacity}
                                 onChange={this.handleChange}
                                 />
-                                <button onClick={() => this.doneEdit("capacity")}>Ok</button>
+                                <span onClick={() => this.doneEdit("capacity")}><FontAwesomeIcon icon={faCheck}/></span>
                               </div>
                             : <div>
                                 {capacity} 
@@ -85,11 +86,11 @@ export default class Ingredient extends React.Component {
                                 <input
                                 type="number"
                                 name="used"
-                                step="0.00"
+                                step="0.01"
                                 value={used}
                                 onChange={this.handleChange}
                                 />
-                                <button onClick={() => this.doneEdit("used")}>Ok</button>
+                                <span onClick={() => this.doneEdit("used")}><FontAwesomeIcon icon={faCheck}/></span>
                               </div>
                             : <div>
                                 {used} 
@@ -102,22 +103,22 @@ export default class Ingredient extends React.Component {
                             ? <div>
                                 <input
                                 type="number"
-                                step="0.00"
-                                value={avgneed}
-                                name="avgneed"
+                                step="0.01"
+                                value={average_need}
+                                name="average_need"
                                 onChange={this.handleChange}
                                 />
-                                <button onClick={() => this.doneEdit("avg_need")}>Ok</button>
+                                <span onClick={() => this.doneEdit("avg_need")}><FontAwesomeIcon icon={faCheck}/></span>
                               </div>
                             : <div>
-                                {avgneed} 
+                                {average_need } 
                                 <span onClick={() => this.toggleEdit("avg_need")}><FontAwesomeIcon icon={faEdit}/></span>
                             </div>
                             }
                         </td>
-                        <td>{each.capacity - each.used}</td>
-                        <td>{each.average_need-(each.capacity - each.used)}</td>
-                        <td>{each.used}</td>
+                        <td>{capacity - used > 0 ? Math.round((capacity - used)*100)/100 : "0"}</td>
+                        <td>{average_need-(capacity - used) > 0 ? Math.round((average_need-(capacity - used))*100)/100 : "0"}</td>
+                        <td>{Math.round(used*100)/100}</td>
                 </tr>
         )
     }
