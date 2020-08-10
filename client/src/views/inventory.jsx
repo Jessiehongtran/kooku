@@ -1,20 +1,31 @@
 import React from 'react';
 import { ingredients } from '../data/ingredients';
+import Axios from 'axios';
 import '../styles/inventory.scss';
 import Ingredient from '../components/each_ingredient'
-import { faPrint } from '@fortawesome/free-solid-svg-icons';
+import { API_URL } from '../config';
 
 export default class Inventory extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            ingredients: ingredients,
+            ingredients: [],
             new_ingredient: "",
             unit: "",
         }
         this.handleChange = this.handleChange.bind(this)
         this.addIngredient = this.addIngredient.bind(this)
 
+    }
+
+    componentDidMount(){
+        Axios.get(`${API_URL}/api/ingredients`)
+             .then(res => {
+                 this.setState({ingredients: res.data})
+             })
+             .catch(err => {
+                 console.log(err.response)
+             })
     }
 
     handleChange = (e) => {
