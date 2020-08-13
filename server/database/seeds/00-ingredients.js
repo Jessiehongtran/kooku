@@ -6,7 +6,6 @@ exports.seed = function(knex) {
       // Inserts seed entries
       return knex('ingredients').insert([
         {
-          id: 1,
           ingredient_name: "Broccoli",
           unit: "gr",
           capacity: 100,
@@ -14,7 +13,6 @@ exports.seed = function(knex) {
           used: 30,
         },
         {
-          id: 2,
           ingredient_name: "Orange",
           unit: "item",
           capacity: 10,
