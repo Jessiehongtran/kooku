@@ -45,6 +45,7 @@ export default class Inventory extends React.Component {
             average_need: 0,
             used: 0,
         }
+        console.log('new_ingre', new_ingre)
         Axios.post(`${API_URL}/api/ingredients`, new_ingre)
             .then(res => {
                 this.getIngredients()
