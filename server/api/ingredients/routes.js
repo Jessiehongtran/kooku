@@ -15,6 +15,7 @@ router.get('/', async (req,res) => {
 //POST
 router.post('/', async (req,res) => {
     const new_ingredient = req.body
+    console.log('new_ingredient', new_ingredient)
     try {
         const ingredient_id = await Ingredients.create(new_ingredient)
         res.status(200).json(ingredient_id)
