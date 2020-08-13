@@ -18,14 +18,18 @@ export default class Inventory extends React.Component {
 
     }
 
-    componentDidMount(){
+    getIngredients(){
         Axios.get(`${API_URL}/api/ingredients`)
-             .then(res => {
-                 this.setState({ingredients: res.data})
-             })
-             .catch(err => {
-                 console.log(err.response)
-             })
+            .then(res => {
+                this.setState({ingredients: res.data})
+            })
+            .catch(err => {
+                console.log(err.response)
+            })
+    }
+
+    componentDidMount(){
+       this.getIngredients()
     }
 
     handleChange = (e) => {
@@ -35,16 +39,19 @@ export default class Inventory extends React.Component {
     addIngredient = (e) => {
         e.preventDefault()
         const new_ingre = {
-            id: this.state.ingredients.length + 1,
             ingredient_name: this.state.new_ingredient,
             unit: this.state.unit,
             capacity: 0,
             average_need: 0,
             used: 0,
         }
-        this.setState({
-            ingredients: [...this.state.ingredients, new_ingre]
-        })
+        Axios.post(`${API_URL}/api/ingredients`, new_ingre)
+            .then(res => {
+                this.getIngredients()
+            })
+            .catch(err => {
+                console.log(err.response)
+            })
     }
 
     render(){
