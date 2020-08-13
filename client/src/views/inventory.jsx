@@ -1,5 +1,4 @@
 import React from 'react';
-import { ingredients } from '../data/ingredients';
 import Axios from 'axios';
 import '../styles/inventory.scss';
 import Ingredient from '../components/each_ingredient'
