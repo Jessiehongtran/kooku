@@ -76,23 +76,24 @@ export default class Inventory extends React.Component {
                 />
                 <button onClick={this.addIngredient}>Add</button>
             </div>
-            <table>
-                <tr>
-                    <th>ID</th>
-                    <th>Ingredients</th>
-                    <th>Unit</th>
-                    <th>Capacity</th>
-                    <th>Used</th>
-                    <th>Average Need</th>
-                    <th>Inventory</th>
-                    <th>To Fill (min)</th>
-                    <th>To Fill (max)</th>
-                </tr>
-                {ingredients.map(each => 
-                    <Ingredient ingredient= {each}/>
-                    
-                )}
-            </table>
+            { ingredients.length >0
+              ?  <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>Ingredients</th>
+                        <th>Unit</th>
+                        <th>Capacity</th>
+                        <th>Used</th>
+                        <th>Average Need</th>
+                        <th>Inventory</th>
+                        <th>To Fill (min)</th>
+                        <th>To Fill (max)</th>
+                    </tr>
+                    {ingredients.map(each => 
+                        <Ingredient ingredient= {each}/>)}
+                </table>
+              : <img src="https://res.cloudinary.com/dfulxq7so/image/upload/v1597358628/loader-cooking_cfwqz6.gif"/>
+            }
             <div className="print_container">
                 <button className="print" onClick={() => window.print()}>Print Report</button>
             </div>
