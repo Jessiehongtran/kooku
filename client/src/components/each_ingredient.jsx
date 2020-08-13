@@ -1,7 +1,9 @@
 import React from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faCheck } from "@fortawesome/free-solid-svg-icons";
+import { API_URL } from '../config';
 import '../styles/each_ingredient.scss'
+import Axios from 'axios';
 
 export default class Ingredient extends React.Component {
     constructor(props){
@@ -35,8 +37,14 @@ export default class Ingredient extends React.Component {
         this.setState({[e.target.name]: e.target.value})
     }
 
-    updateChange(){
+    updateChange(name, change){
         //change in backend
+        Axios.patch(`${API_URL}/api/ingredients/${this.props.ingredient.id}`, change)
+             .then(res => {
+             })
+             .catch(err => {
+                 console.log(err.response)
+             })
     }
 
     doneEdit(toClose){
